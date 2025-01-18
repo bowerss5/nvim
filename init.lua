@@ -23,4 +23,6 @@ require("lazy").setup({
 	require("plugins.autocomplete"),
 	require("plugins.formatting"),
 	require("plugins.gitsigns"),
+	require("plugins.indent"),
+	require("plugins.misc"),
 })
