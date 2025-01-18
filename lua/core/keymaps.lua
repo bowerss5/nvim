@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>tt", function()
 	vim.cmd.wincmd("J")
 	vim.api.nvim_win_set_height(0, 5)
 end)
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
 
 -- Indent mode fix
 vim.keymap.set("v", "<", "<gv", opts)
