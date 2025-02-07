@@ -90,13 +90,8 @@ return {
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-<<<<<<< HEAD
 		vim.keymap.set("n", "<leader><leader>", builtin.git_files, { desc = "[ ] Search in git files" })
 		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch existing [b]uffers" })
-=======
-		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[ ] Find existing buffers" })
-		vim.keymap.set("n", "<leader><leader>", builtin.git_files, { desc = "[S]earch git files" })
->>>>>>> refs/remotes/origin/master
 
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>/", function()
