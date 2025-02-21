@@ -13,6 +13,9 @@ return {
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
+		-- Null-ls for additional formatters and linters
+		"jose-elias-alvarez/null-ls.nvim",
+		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		-- Brief aside: **What is LSP?**
@@ -141,7 +144,22 @@ return {
 		--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		-- Setup null-ls for Prettier
+		local null_ls = require("null-ls")
 
+		null_ls.setup({
+			sources = {
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				}),
+			},
+		})
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+			callback = function()
+				vim.lsp.buf.format({ async = false })
+			end,
+		})
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--
